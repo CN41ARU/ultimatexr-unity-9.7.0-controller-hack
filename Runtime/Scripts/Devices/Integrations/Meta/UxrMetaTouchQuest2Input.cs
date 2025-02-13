@@ -54,12 +54,27 @@ namespace UltimateXR.Devices.Integrations.Meta
 
         #region Public Overrides UxrUnityXRControllerInput
 
+        ///// <inheritdoc />
+        //public override IEnumerable<string> ControllerNames
+        //{
+        //    get
+        //    {
+        //        if (UxrTrackingDevice.HeadsetDeviceName is "Oculus Quest2")
+        //        {
+        //            yield return "Oculus Touch Controller - Left";
+        //            yield return "Oculus Touch Controller - Right";
+        //        }
+        //    }
+        //}
+
+        // controller not working hack fix from XianGrim Discord
         /// <inheritdoc />
         public override IEnumerable<string> ControllerNames
         {
             get
             {
-                if (UxrTrackingDevice.HeadsetDeviceName is "Oculus Quest2")
+                UnityEngine.Debug.LogWarning("Enrique's Debug Log Request Result: " + UxrTrackingDevice.HeadsetDeviceName);
+                if (UxrTrackingDevice.HeadsetDeviceName is "Oculus Quest2" || UxrTrackingDevice.HeadsetDeviceName is "Vive OpenXR: Vive SRanipal")
                 {
                     yield return "Oculus Touch Controller - Left";
                     yield return "Oculus Touch Controller - Right";
